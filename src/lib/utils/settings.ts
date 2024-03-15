@@ -28,7 +28,6 @@ export function getSettingsString(settings: SelectedSettings): string {
     Object.keys(settings)
       .filter((key) => key !== "filter_complex")
       .forEach((key) => {
-        window.console.log(key);
         values[0].value = values[0].value.replace(
           `{${key}}`,
           settings[key].value,
