@@ -20,7 +20,23 @@ export function createFFmegCommandArgs(
 export function getSettingsString(settings: SelectedSettings): string {
   if (!settings) return "";
 
-  return Object.values(settings)
+  let values = Object.values(settings);
+
+  if (settings.filter_complex) {
+    values = [{ ...settings.filter_complex }];
+
+    Object.keys(settings)
+      .filter((key) => key !== "filter_complex")
+      .forEach((key) => {
+        window.console.log(key);
+        values[0].value = values[0].value.replace(
+          `{${key}}`,
+          settings[key].value,
+        );
+      });
+  }
+
+  return values
     .reduce((acc, setting) => {
       return `${acc} ${setting.value}`.trim();
     }, "")

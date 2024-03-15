@@ -44,6 +44,27 @@ describe("lib/utils", () => {
       const settingsString = getSettingsString(settings);
       expect(settingsString).toEqual("test -ar 44100");
     });
+
+    it('it should handle "filter_complex" settings', () => {
+      const settings = {
+        filter_complex: {
+          id: "filter_complex",
+          label: "Filter",
+          value: "-filter_complex bit={bit-depth},rate={sample-rate}",
+        },
+        "bit-depth": { id: "16", label: "16 bit", value: "pcm_s16le" },
+        "sample-rate": {
+          id: "44.1",
+          label: "44.1 kHz",
+          value: "44100",
+        },
+      };
+
+      const settingsString = getSettingsString(settings);
+      expect(settingsString).toEqual(
+        "-filter_complex bit=pcm_s16le,rate=44100",
+      );
+    });
   });
 
   describe("#createSettingsFromString()", () => {
