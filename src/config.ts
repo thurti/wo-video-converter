@@ -63,7 +63,7 @@ export const config = {
     mp4: [
       {
         id: "mp4-vcodec",
-        label: "Video Codec",
+        label: "H.264",
         value: "-vcodec libx264",
         isDefault: true,
       },
@@ -139,7 +139,7 @@ export const config = {
     h265: [
       {
         id: "h265-vcodec",
-        label: "Video Codec",
+        label: "H.265",
         value: "-vcodec libx265",
         isDefault: true,
       },
@@ -223,7 +223,7 @@ export const config = {
     webm: [
       {
         id: "webm-vcodec",
-        label: "Video Codec",
+        label: "VP8",
         value: "-vcodec libvpx",
         isDefault: true,
       },
@@ -304,7 +304,7 @@ export const config = {
     ogv: [
       {
         id: "ogv-vcodec",
-        label: "Video Codec",
+        label: "Theora",
         value: "-vcodec libtheora",
         isDefault: true,
       },
@@ -379,7 +379,7 @@ export const config = {
     gif: [
       {
         id: "filter_complex",
-        label: "Palette",
+        label: "GIF",
         value:
           "-filter_complex loop={gif-loop},fps={gif-fps},scale={gif-scale}[s];[s]split[a][b];[a]palettegen[palette];[b][palette]paletteuse",
         isDefault: true,
