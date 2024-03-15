@@ -4,6 +4,46 @@
 </script>
 
 <PageContainer title="FAQ">
+  <UiSection id="slow">
+    <slot slot="heading">Why is converting files so slow?</slot>
+    <p>
+      Encoding videos is a very CPU intensive task. Due to the limitations of
+      WASM, the encoding process is about 10x slower than on a native
+      application. The encoding speed also depends on the file size and the
+      complexity of the video and the codec. <a
+        href="https://ffmpegwasm.netlify.app/docs/performance"
+        >more informations on ffmpeg wasm performance</a
+      >
+    </p>
+    <p>
+      If you are doing serious video work, you should use ffmpeg directly (not
+      via browser) or use a video editing software.
+    </p>
+  </UiSection>
+
+  <UiSection id="memory">
+    <slot slot="heading">Why do I get memory errors?</slot>
+    <p>
+      The encoding process is very memory intensive. There is a limit on how
+      much memory a web application can use. If you get memory errors, try to
+      convert a smaller file or use a different codec.
+    </p>
+    <p>
+      Again, if you are doing serious video stuff, you should use ffmpeg
+      directly (not via browser) or use a video editing software.
+    </p>
+  </UiSection>
+
+  <UiSection id="codec">
+    <slot slot="heading">Why is there no support for AV1, VP9?</slot>
+    <p>
+      AV1 is not supported by ffmpeg wasm. VP9 is technically supported, but in
+      my tests it was so memory intensive that it almost always resulted in
+      memory errors. I will add VP9 support when performance is better.
+    </p>
+    <p>Again, if you are doing... Ah ok, you got it.</p>
+  </UiSection>
+
   <UiSection id="offline">
     <slot slot="heading">
       Why do I get the message that my browser doesn't support offline
