@@ -44,10 +44,12 @@
   }
 
   $: tabs =
-    formatSettings?.map((setting) => ({
-      id: setting.id,
-      name: setting.label,
-    })) ?? [];
+    formatSettings
+      ?.filter((setting) => setting.options)
+      .map((setting) => ({
+        id: setting.id,
+        name: setting.label,
+      })) ?? [];
 
   const onUpdateSelectedSetting = ({
     id,
