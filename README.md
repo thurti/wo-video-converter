@@ -21,14 +21,12 @@ Cross Origin Isolation Headers: https://developer.chrome.com/blog/enabling-share
 
 ## FFMPEG References
 
-| format  | options                                                                                          |
-| ------- | ------------------------------------------------------------------------------------------------ |
-| wav     | https://trac.ffmpeg.org/wiki/video%20types                                                       |
-| mp3     | https://trac.ffmpeg.org/wiki/Encode/MP3                                                          |
-|         | https://en.wikipedia.org/wiki/MP3#Bit_rate                                                       |
-| ogg     |  https://wiki.hydrogenaud.io/index.php?title=Recommended_Ogg_Vorbis#Recommended_Encoder_Settings |
-| mp4/aac | https://trac.ffmpeg.org/wiki/Encode/AAC                                                          |
-| flac    | https://www.ffmpeg.org/ffmpeg-codecs.html#flac-2                                                 |
+| format | options                                                |
+| ------ | ------------------------------------------------------ |
+| h264   | https://trac.ffmpeg.org/wiki/Encode/H.264              |
+| h265   | https://trac.ffmpeg.org/wiki/Encode/H.265              |
+| VP8    |  https://trac.ffmpeg.org/wiki/Encode/VP8               |
+| Theora | https://trac.ffmpeg.org/wiki/TheoraVorbisEncodingGuide |
 
 ## Credits
 
