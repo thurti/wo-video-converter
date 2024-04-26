@@ -4,11 +4,29 @@
   import { onMount } from "svelte";
   import UiDialog from "./ui/UIDialog.svelte";
   import UiButton from "./ui/UIButton.svelte";
+  import bmac from "@/assets/bmac.png";
+  import kofi from "@/assets/kofi.webp";
+  import GithubLink from "./GithubLink.svelte";
 
   const count = tweened(0, {
     duration: $conversionCount * 100,
     delay: 1000,
   });
+
+  const amIBroke = async () => {
+    try {
+      const result = await fetch("https://worksoffline.app/am-i-broke.php");
+      const text = await result.text();
+
+      if (result.ok) {
+        return text;
+      } else {
+        return "false";
+      }
+    } catch (error) {
+      return "false";
+    }
+  };
 
   onMount(() => {
     count.set($conversionCount);
@@ -38,8 +56,8 @@
   </p>
   <hr class="my-8" />
   <p>
-    If you like <span class="font-thin">worksoffline.app</span>, please consider
-    donating to <i>Sea-Watch e.V.</i>
+    If you are fortunate enough to be able to donate, please consider donating
+    to <i>Sea-Watch e.V.</i>
   </p>
   <UiButton
     as="a"
@@ -59,7 +77,34 @@
       Mediterranean.
     </span>
   </p>
+
   <hr class="mt-8" />
+
+  {#await amIBroke() then broke}
+    {#if broke === "true"}
+      <div class="mt-6 flex justify-center items-center gap-4 flex-wrap">
+        <!-- BUY ME A COFFEE -->
+        <a href="https://www.buymeacoffee.com/thurti" target="_blank"
+          ><img src={bmac} alt="Buy Me A Coffee" class="h-8" /></a
+        >
+
+        <!-- KO-FI -->
+        <a href="https://ko-fi.com/thurti" target="_blank"
+          ><img src={kofi} alt="Support on Ko-Fi" class="h-8" /></a
+        >
+
+        <!-- GITHUB -->
+        <UiButton outline small
+          ><GithubLink
+            url="https://github.com/sponsors/thurti"
+            text="Sponsor on Github"
+            class="unstyled text-xs h-7"
+          /></UiButton
+        >
+      </div>
+    {/if}
+  {/await}
+
   <p class="mt-6">
     If you need a developer you can <a
       href="https://thomashurtig.de"

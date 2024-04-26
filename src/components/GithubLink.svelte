@@ -1,6 +1,9 @@
 <script lang="ts">
   export let url: string;
   export let text: string = "";
+  export { className as class };
+
+  let className = "";
 
   const noText = text === "" ? true : false;
 </script>
@@ -8,7 +11,7 @@
 <a
   href={url}
   title="Code on Github"
-  class="flex items-center gap-1 !no-underline"
+  class="flex items-center gap-1 !no-underline {className}"
   style="color: var(--theme-font-color)"
 >
   <svg role="img" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"
@@ -20,9 +23,15 @@
 >
 
 <style>
+  a {
+    padding-top: 1px;
+  }
+
   svg {
     @apply w-5;
+    margin-top: -1px;
   }
+
   path {
     @apply fill-current;
   }
