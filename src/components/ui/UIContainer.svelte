@@ -5,7 +5,11 @@
   export let isOpen = true;
 </script>
 
-<main class="container mx-auto h-full p-1 pb-16" class:isOpen on:transitionend>
+<main
+  class="container mx-auto h-full p-1 px-3 pb-16"
+  class:isOpen
+  on:transitionend
+>
   <div
     class={`flow inner relative z-0 mx-auto  max-w-prose`}
     class:!items-start={!center}
