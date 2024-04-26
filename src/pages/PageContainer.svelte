@@ -24,13 +24,13 @@
   });
 
   onDestroy(() => {
-    document.title = `${config.title} | worksoffline.app`;
+    document.title = `${config.title}`;
     document.removeEventListener("keydown", onEscape);
   });
 </script>
 
 <svelte:head>
-  <title>{title} | {config.title} | worksoffline.app</title>
+  <title>{title} | {config.title}</title>
 </svelte:head>
 
 <UiContainer center={false}>
