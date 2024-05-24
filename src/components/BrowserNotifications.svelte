@@ -36,7 +36,6 @@
   const clearBadge = () => {
     if (!isBadgeSupported || !get(badgeOnConversionReady)) return;
 
-    $filesReadyForDownload = new Set();
     navigator.clearAppBadge();
   };
 
