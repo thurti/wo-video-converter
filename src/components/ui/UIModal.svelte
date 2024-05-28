@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { onDestroy, onMount } from "svelte";
   import UiButton from "./UIButton.svelte";
 
   export let id = "modal";
   export let open = false;
 
-  let refDialog: HTMLDialogElement;
+  let refDialog: HTMLDialogElement | null;
 
   $: {
     if (refDialog) {
@@ -15,6 +16,20 @@
       }
     }
   }
+
+  function close() {
+    open = false;
+  }
+
+  onMount(() => {
+    window.addEventListener("popstate", close);
+  });
+
+  onDestroy(() => {
+    window.removeEventListener("popstate", close);
+    refDialog?.close();
+    refDialog = null;
+  });
 </script>
 
 <dialog
